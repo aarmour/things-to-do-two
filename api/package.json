@@ -1,0 +1,31 @@
+{
+  "name": "things-to-do-two-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack --watch & nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "convict": "^3.0.0",
+    "good": "^7.2.0",
+    "good-console": "^6.4.0",
+    "hapi": "^16.1.1",
+    "joi": "^10.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.22",
+    "codelyzer": "^3.0.1",
+    "nodemon": "^1.11.0",
+    "ts-loader": "^2.1.0",
+    "tslint": "^5.3.2",
+    "typescript": "^2.3.3",
+    "webpack": "^2.6.1"
+  }
+}
