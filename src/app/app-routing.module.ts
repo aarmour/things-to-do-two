@@ -4,7 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    children: []
+    redirectTo: 'events',
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    loadChildren: './+admin/admin.module#AdminModule',
+    pathMatch: 'full'
+  },
+  {
+    path: 'events',
+    loadChildren: './+events/events.module#EventsModule',
+    pathMatch: 'full'
   }
 ];
 
