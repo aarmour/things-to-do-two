@@ -1,4 +1,7 @@
+import 'hammerjs';
+
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -9,6 +12,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { environment } from '../environments/environment';
 
+import { ComponentsModule } from './components/components.module';
 import { CoreModule } from './core/core.module';
 import { StateModule } from './state/state.module';
 
@@ -21,6 +25,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -28,7 +33,8 @@ import { AppComponent } from './app.component';
     AngularFireAuthModule,
     CoreModule,
     StateModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
