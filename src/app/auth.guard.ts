@@ -11,9 +11,21 @@ import { State } from './state/state';
 import * as selectors from './state/selectors';
 
 @Injectable()
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanActivate, CanLoad {
+
 
   constructor(private router: Router, private store: Store<State>) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    return this.waitForAuthToInitialize()
+      .switchMap(() => this.store.select(selectors.user.isAuthenticated))
+      .take(1)
+      .do(authenticated => {
+        if (!authenticated) {
+          this.router.navigate(['/login']);
+        }
+      });
+  }
 
   canLoad(route: Route): Observable<boolean> {
     return this.waitForAuthToInitialize()

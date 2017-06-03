@@ -7,19 +7,16 @@ import { NotFoundPageComponent } from './core/not-found-page/not-found-page.comp
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: './+login/login.module#LoginModule',
-    pathMatch: 'full'
+    loadChildren: './+login/login.module#LoginModule'
   },
   {
     path: 'admin',
     loadChildren: './+admin/admin.module#AdminModule',
-    pathMatch: 'full',
     canLoad: [AuthGuard]
   },
   {
     path: 'events',
-    loadChildren: './+events/events.module#EventsModule',
-    pathMatch: 'full'
+    loadChildren: './+events/events.module#EventsModule'
   },
   {
     path: '',
