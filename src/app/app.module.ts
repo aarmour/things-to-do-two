@@ -18,6 +18,7 @@ import { StateModule } from './state/state.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     ComponentsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

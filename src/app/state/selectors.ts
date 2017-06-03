@@ -6,6 +6,7 @@ import * as fromUser from './user/selectors';
 const userState = (state: State) => state.user;
 
 export const user = {
+  initialized: createSelector(userState, fromUser.initialized),
   isAuthenticated: createSelector(userState, fromUser.isAuthenticated),
   profile: createSelector(userState, fromUser.profile)
 };

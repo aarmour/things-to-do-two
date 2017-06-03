@@ -8,7 +8,7 @@ import { Action, Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
 
-import { State } from '../root-reducer';
+import { State } from '../state';
 import * as user from './actions';
 
 @Injectable()
@@ -43,7 +43,7 @@ export class UserEffects {
             photoURL: firebaseUser.photoURL,
             uid: firebaseUser.uid
           }));
-      } else {
+        } else {
           this.store.dispatch(new user.LogoutSuccessAction());
         }
       });

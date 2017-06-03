@@ -1,4 +1,4 @@
-import { EffectsModule } from '@ngrx/effects'
+import { EffectsModule } from '@ngrx/effects';
 
 import { UserEffects } from './user/effects';
 
