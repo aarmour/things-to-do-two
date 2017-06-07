@@ -1,0 +1,6 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
+  <md-input-container>
+    <input mdInput placeholder="Event name" formControlName="name">
+  </md-input-container>
+  <button md-raised-button type="submit" color="primary" [disabled]="eventForm.pristine || eventForm.invalid">Save</button>
+</form>

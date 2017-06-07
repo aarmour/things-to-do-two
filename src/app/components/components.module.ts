@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import {
   MdButtonModule,
   MdCardModule,
-  MdCheckboxModule
+  MdCheckboxModule,
+  MdInputModule
 } from '@angular/material';
 
 const mdModules = [
   MdButtonModule,
   MdCardModule,
-  MdCheckboxModule
+  MdCheckboxModule,
+  MdInputModule
 ];
 
 @NgModule({

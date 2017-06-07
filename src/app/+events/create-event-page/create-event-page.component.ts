@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+
+import { State } from '../../state/state';
+import * as eventActions from '../../state/events/actions';
+
+import { CreateEventFormModel } from '../create-event-form/create-event-form.model';
+
 @Component({
   selector: 'ttd-create-event-page',
   templateUrl: './create-event-page.component.html',
   styleUrls: ['./create-event-page.component.scss']
 })
-export class CreateEventPageComponent implements OnInit {
+export class CreateEventPageComponent {
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
-  ngOnInit() {
+  onCreateEvent(data: CreateEventFormModel) {
+    this.store.dispatch(new eventActions.CreateEventAction(data));
   }
 
 }

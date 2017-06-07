@@ -5,13 +5,15 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { createSelector } from 'reselect';
 
 import { State } from './state';
+import { reducer as eventsReducer } from './events/reducer';
 import { reducer as userReducer } from './user/reducer';
 
 import { environment } from '../../environments/environment';
 
 const reducers = {
   router: router.routerReducer,
-  user: userReducer
+  user: userReducer,
+  events: eventsReducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
