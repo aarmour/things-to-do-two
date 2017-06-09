@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 
+import 'rxjs/add/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
 
 import { State } from '../state';
@@ -14,39 +15,47 @@ import * as user from './actions';
 @Injectable()
 export class UserEffects {
 
-  @Effect({ dispatch: false })
+  @Effect()
   login: Observable<Action> = this.actions
     .ofType(user.LOGIN)
-    .switchMap(() => {
-      this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-      return Observable.of({ });
-    });
+    .switchMap(() => Observable.fromPromise(this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()))
+      .map((response: { user: firebase.User }) => response.user)
+      .map((firebaseUser: firebase.User) => {
+        return new user.LoginSuccessAction(this.getPayload(firebaseUser));
+      }));
 
-  @Effect({ dispatch: false })
+  @Effect()
   logout: Observable<Action> = this.actions
     .ofType(user.LOGOUT)
-    .switchMap(() => {
-      this.afAuth.auth.signOut();
-      return Observable.of({ });
-    });
+    .switchMap(() => Observable.fromPromise(this.afAuth.auth.signOut())
+      .map(() => new user.LogoutSuccessAction()));
 
   constructor(private actions: Actions, private afAuth: AngularFireAuth, private store: Store<State>) {
+    this.initAuth();
+  }
+
+  initAuth() {
     this.afAuth.authState
+      .take(1)
       .subscribe((firebaseUser: firebase.User) => {
         if (firebaseUser) {
-          this.store.dispatch(new user.LoginSuccessAction({
-            displayName: firebaseUser.displayName,
-            email: firebaseUser.email,
-            emailVerified: firebaseUser.emailVerified,
-            isAnonymous: firebaseUser.isAnonymous,
-            phoneNumber: firebaseUser.phoneNumber,
-            photoURL: firebaseUser.photoURL,
-            uid: firebaseUser.uid
-          }));
+          this.store.dispatch(new user.LoginSuccessAction(this.getPayload(firebaseUser)));
         } else {
           this.store.dispatch(new user.LogoutSuccessAction());
         }
       });
+  }
+
+  getPayload(firebaseUser: firebase.User): user.UserInfo {
+    return {
+      displayName: firebaseUser.displayName,
+      email: firebaseUser.email,
+      emailVerified: firebaseUser.emailVerified,
+      isAnonymous: firebaseUser.isAnonymous,
+      phoneNumber: firebaseUser.phoneNumber,
+      photoURL: firebaseUser.photoURL,
+      uid: firebaseUser.uid
+    };
   }
 
 }
