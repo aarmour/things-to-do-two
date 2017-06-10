@@ -5,7 +5,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { createSelector } from 'reselect';
 
 import { State } from './state';
-import { reducer as eventsReducer } from './events/reducer';
+import { reducer as firebaseReducer } from './firebase/reducer';
 import { reducer as userReducer } from './user/reducer';
 
 import { environment } from '../../environments/environment';
@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
 const reducers = {
   router: router.routerReducer,
   user: userReducer,
-  events: eventsReducer
+  firebase: firebaseReducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
