@@ -24,7 +24,10 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@ngrx/core": "^1.2.0",
-    "@ngrx/store": "^2.2.2",
+    "@ngrx/effects": "github:ngrx/effects-builds",
+    "@ngrx/router-store": "github:ngrx/router-store-builds",
+    "@ngrx/store": "github:ngrx/store-builds",
+    "@ngrx/store-devtools": "github:ngrx/store-devtools-builds",
     "angularfire2": "^4.0.0-rc.0",
     "core-js": "^2.4.1",
     "firebase": "^4.1.0",
@@ -53,6 +56,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "~2.3.0"
   }
 }

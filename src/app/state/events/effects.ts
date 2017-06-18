@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import 'rxjs/add/observable/of';
@@ -16,7 +16,7 @@ export class EventsEffects {
   @Effect()
   create: Observable<Action> = this.actions
     .ofType(events.CREATE_EVENT)
-    .map((action: events.CreateEventAction) => action.payload)
+    .map(toPayload)
     .switchMap((event: Event) => Observable.of(new fbActions.PushListItemAction({ url: '/events', value: event })));
 
   constructor(private actions: Actions) { }

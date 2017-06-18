@@ -1,5 +1,5 @@
 import { compose } from '@ngrx/core/compose';
-import * as router from '@ngrx/router-store';
+import { routerReducer } from '@ngrx/router-store';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { createSelector } from 'reselect';
@@ -11,7 +11,7 @@ import { reducer as userReducer } from './user/reducer';
 import { environment } from '../../environments/environment';
 
 const reducers = {
-  router: router.routerReducer,
+  router: routerReducer,
   user: userReducer,
   firebase: firebaseReducer
 };
