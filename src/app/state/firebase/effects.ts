@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 import {
@@ -20,14 +20,15 @@ export class FirebaseEffects {
   @Effect()
   pushList: Observable<Action> = this.actions
     .ofType(fbActions.PUSH_LIST_ITEM)
-    .switchMap((action) => {
-      let list = lists[action.payload.url];
+    .map(toPayload)
+    .switchMap((payload) => {
+      let list = lists[payload.url];
       if (typeof list === 'undefined') {
-        list = lists[action.payload.url] = this.db.list(action.payload.url);
+        list = lists[payload.url] = this.db.list(payload.url);
       }
 
-      return Observable.fromPromise(list.push(action.payload.value))
-        .map((item: { key: string }) => new fbActions.PushListItemSuccessAction({ key: item.key, value: action.payload.value }));
+      return Observable.fromPromise(list.push(payload.value))
+        .map((item: { key: string }) => new fbActions.PushListItemSuccessAction({ key: item.key, value: payload.value }));
     });
 
   constructor(private actions: Actions, private db: AngularFireDatabase) { }
