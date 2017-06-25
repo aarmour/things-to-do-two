@@ -1,13 +1,6 @@
-<md-card *ngIf="isAuthenticated | async; else anonymous">
-  <md-card-header *ngIf="profile | async; let profile">
-    <img md-card-avatar [src]="profile.photoURL">
-    <md-card-title>{{profile.displayName}}</md-card-title>
-    <md-card-subtitle>{{profile.email}}</md-card-subtitle>
-  </md-card-header>
-  <md-card-content>
-    <button md-raised-button color="primary" (click)="logout()">Sign Out</button>
-  </md-card-content>
-</md-card>
+<div *ngIf="isAuthenticated | async; else anonymous">
+  <button md-raised-button color="primary" (click)="logout()">Sign Out</button>
+</div>
 
 <ng-template #anonymous>
   <button md-raised-button color="primary" (click)="login()">Sign In</button>

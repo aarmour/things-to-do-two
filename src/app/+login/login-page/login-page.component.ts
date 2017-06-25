@@ -17,13 +17,11 @@ import * as selectors from '../../state/selectors';
 export class LoginPageComponent implements OnInit {
 
   isAuthenticated: Observable<Object>;
-  profile: Observable<Object>;
 
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
     this.isAuthenticated = this.store.select(selectors.user.isAuthenticated);
-    this.profile = this.store.select(selectors.user.profile);
   }
 
   login() {

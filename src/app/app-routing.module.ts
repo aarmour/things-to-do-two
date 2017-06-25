@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: './+events/events.module#EventsModule'
   },
   {
+    path: 'user',
+    loadChildren: './+user/user.module#UserModule',
+    canLoad: [AuthGuard]
+  },
+  {
     path: '',
     redirectTo: 'events',
     pathMatch: 'full'
