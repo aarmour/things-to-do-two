@@ -17,9 +17,11 @@ export class ProfileFormComponent implements OnInit {
   @ViewChild(NgForm)
   ngForm: NgForm;
 
-  birthday: Date;
-  gender: number;
   genderOptions = [{ code: 0, name: 'Female' }, { code: 1, name: 'Male' }, { code: 3, name: 'I\'d rather not say' }];
+  profileForm: {
+    birthday?: Date,
+    gender?: number,
+  } = { };
 
   constructor(private store: Store<State>) { }
 
