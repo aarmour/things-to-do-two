@@ -6,8 +6,11 @@ import {
   MdCheckboxModule,
   MdDatepickerModule,
   MdInputModule,
+  MdMenuModule,
   MdNativeDateModule,
-  MdSelectModule
+  MdProgressSpinnerModule,
+  MdSelectModule,
+  MdToolbarModule
 } from '@angular/material';
 
 const mdModules = [
@@ -16,8 +19,11 @@ const mdModules = [
   MdCheckboxModule,
   MdDatepickerModule,
   MdInputModule,
+  MdMenuModule,
   MdNativeDateModule,
-  MdSelectModule
+  MdProgressSpinnerModule,
+  MdSelectModule,
+  MdToolbarModule
 ];
 
 @NgModule({

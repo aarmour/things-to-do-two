@@ -1,0 +1,23 @@
+<div *ngIf="isAuthInitialized | async; else loading">
+  <div *ngIf="isAuthenticated | async; else anonymous">
+    <span *ngIf="profile | async; let profile">
+      <button md-button [mdMenuTriggerFor]="menu">
+        {{profile.displayName}}
+      </button>
+      <md-menu #menu="mdMenu">
+        <a md-menu-item routerLink="/user/profile" routerLinkActive="active">Profile</a>
+        <button md-menu-item (click)="logout()">
+          <span>Sign out</span>
+        </button>
+      </md-menu>
+    </span>
+  </div>
+</div>
+
+<ng-template #anonymous>
+  <button md-button (click)="login()">Sign in</button>
+</ng-template>
+
+<ng-template #loading>
+  <md-spinner color="accent"></md-spinner>
+</ng-template>
