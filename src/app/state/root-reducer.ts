@@ -6,14 +6,16 @@ import { createSelector } from 'reselect';
 
 import { State } from './state';
 import { reducer as firebaseReducer } from './firebase/reducer';
+import { reducer as formReducer } from './form/reducer';
 import { reducer as userReducer } from './user/reducer';
 
 import { environment } from '../../environments/environment';
 
 const reducers = {
+  firebase: firebaseReducer,
+  form: formReducer,
   router: router.routerReducer,
-  user: userReducer,
-  firebase: firebaseReducer
+  user: userReducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);

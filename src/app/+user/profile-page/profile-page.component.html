@@ -1,7 +1,12 @@
-<md-card>
-  <md-card-header *ngIf="profile | async; let profile">
-    <img md-card-avatar [src]="profile.photoURL">
-    <md-card-title>{{profile.displayName}}</md-card-title>
-    <md-card-subtitle>{{profile.email}}</md-card-subtitle>
-  </md-card-header>
-</md-card>
+<div class="summary">
+  <md-card>
+    <md-card-header *ngIf="profile | async; let profile">
+      <img md-card-avatar [src]="profile.photoURL">
+      <md-card-title>{{profile.displayName}}</md-card-title>
+      <md-card-subtitle>{{profile.email}}</md-card-subtitle>
+    </md-card-header>
+  </md-card>
+</div>
+<div>
+  <ttd-profile-form></ttd-profile-form>
+</div>

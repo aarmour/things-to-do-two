@@ -4,14 +4,20 @@ import {
   MdButtonModule,
   MdCardModule,
   MdCheckboxModule,
-  MdInputModule
+  MdDatepickerModule,
+  MdInputModule,
+  MdNativeDateModule,
+  MdSelectModule
 } from '@angular/material';
 
 const mdModules = [
   MdButtonModule,
   MdCardModule,
   MdCheckboxModule,
-  MdInputModule
+  MdDatepickerModule,
+  MdInputModule,
+  MdNativeDateModule,
+  MdSelectModule
 ];
 
 @NgModule({
