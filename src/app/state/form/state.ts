@@ -1,3 +1,3 @@
-export interface Form {
+export interface State {
   entities: { [key: string]: object };
 }

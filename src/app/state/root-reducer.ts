@@ -7,6 +7,7 @@ import { createSelector } from 'reselect';
 import { State } from './state';
 import { reducer as firebaseReducer } from './firebase/reducer';
 import { reducer as formReducer } from './form/reducer';
+import { reducer as snackBarReducer } from './snack-bar/reducer';
 import { reducer as userReducer } from './user/reducer';
 
 import { environment } from '../../environments/environment';
@@ -15,6 +16,7 @@ const reducers = {
   firebase: firebaseReducer,
   form: formReducer,
   router: router.routerReducer,
+  snackBar: snackBarReducer,
   user: userReducer
 };
 

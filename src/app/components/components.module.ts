@@ -10,6 +10,7 @@ import {
   MdNativeDateModule,
   MdProgressSpinnerModule,
   MdSelectModule,
+  MdSnackBarModule,
   MdToolbarModule
 } from '@angular/material';
 
@@ -23,6 +24,7 @@ const mdModules = [
   MdNativeDateModule,
   MdProgressSpinnerModule,
   MdSelectModule,
+  MdSnackBarModule,
   MdToolbarModule
 ];
 
