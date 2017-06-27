@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { go } from '@ngrx/router-store';
 import { Action, Store } from '@ngrx/store';
 
 import 'rxjs/add/observable/fromPromise';
@@ -29,6 +30,11 @@ export class UserEffects {
     .ofType(user.LOGOUT)
     .switchMap(() => Observable.fromPromise(this.afAuth.auth.signOut())
       .map(() => new user.LogoutSuccessAction()));
+
+  @Effect()
+  logoutSuccess: Observable<Action> = this.actions
+    .ofType(user.LOGOUT_SUCCESS)
+    .map(() => go(['/']));
 
   constructor(private actions: Actions, private afAuth: AngularFireAuth, private store: Store<State>) {
     this.initAuth();
