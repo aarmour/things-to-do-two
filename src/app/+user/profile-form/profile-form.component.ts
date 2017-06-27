@@ -26,8 +26,14 @@ export class ProfileFormComponent implements OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.ngForm.valueChanges.debounceTime(0)
-      .subscribe(formValues => this.store.dispatch(new form.SaveFormAction({ key: USER_PROFILE_FORM, value: formValues })));
+    this.ngForm.valueChanges
+      .debounceTime(300)
+      .subscribe(formValues => {
+        if (this.ngForm.pristine) {
+          return;
+        }
+        this.store.dispatch(new form.SaveFormAction({ key: USER_PROFILE_FORM, value: formValues }));
+      });
   }
 
 }

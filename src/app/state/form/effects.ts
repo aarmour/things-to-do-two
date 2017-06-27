@@ -19,7 +19,7 @@ export class FormEffects {
     .ofType(form.SAVE_FORM)
     .map(toPayload)
     .filter((payload: { key: string }) => payload.key === USER_PROFILE_FORM)
-    .map(() => new snackBar.PushMessageAction({ message: 'Saved profile' }));
+    .map(() => new snackBar.PushMessageAction({ message: 'Profile saved' }));
 
   constructor(private actions: Actions, private store: Store<State>) { }
 
