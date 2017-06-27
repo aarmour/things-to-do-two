@@ -27,7 +27,7 @@ export class ProfileFormComponent implements OnInit {
 
   ngOnInit() {
     this.ngForm.valueChanges
-      .debounceTime(300)
+      .debounceTime(1000)
       .subscribe(formValues => {
         if (this.ngForm.pristine) {
           return;

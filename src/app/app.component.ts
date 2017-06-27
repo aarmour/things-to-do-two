@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     this.store.select(selectors.snackBar.messages)
       .subscribe((messages: string[]) => {
         messages.forEach(message => {
-          this.snackBar.open(message, null, { duration: 500 });
+          this.snackBar.open(message, null, { duration: 1500 });
           this.store.dispatch(new snackBar.PopMessageAction());
         });
       });
