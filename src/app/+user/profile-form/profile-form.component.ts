@@ -22,7 +22,7 @@ export class ProfileFormComponent implements OnDestroy, OnInit {
 
   formValueSubscription: Subscription;
   profileFormSubscription: Subscription;
-  genderOptions = [{ code: 0, name: 'Female' }, { code: 1, name: 'Male' }, { code: 3, name: 'I\'d rather not say' }];
+  genderOptions = [{ code: 1, name: 'Female' }, { code: 2, name: 'Male' }, { code: 3, name: 'I\'d rather not say' }];
   profileForm: {
     birthdate?: Date,
     gender?: number,
