@@ -19,7 +19,7 @@ export class ProfileFormComponent implements OnInit {
 
   genderOptions = [{ code: 0, name: 'Female' }, { code: 1, name: 'Male' }, { code: 3, name: 'I\'d rather not say' }];
   profileForm: {
-    birthday?: Date,
+    birthdate?: Date,
     gender?: number,
   } = { };
 

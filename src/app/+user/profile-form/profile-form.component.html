@@ -3,7 +3,7 @@
     <md-option *ngFor="let option of genderOptions" [value]="option.code">{{ option.name }}</md-option>
   </md-select>
   <md-input-container>
-    <input name="birthday" placeholder="Birthday" [(ngModel)]="profileForm.birthday" mdInput [mdDatepicker]="picker">
+    <input name="birthdate" placeholder="Birthday" [(ngModel)]="profileForm.birthdate" mdInput [mdDatepicker]="picker">
     <button mdSuffix [mdDatepickerToggle]="picker"></button>
   </md-input-container>
   <md-datepicker #picker></md-datepicker>

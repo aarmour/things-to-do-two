@@ -6,6 +6,7 @@ import { ComponentsModule } from '../components/components.module';
 
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { AccountMenuComponent } from './account-menu/account-menu.component';
+import { UserService } from './user/user.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { AccountMenuComponent } from './account-menu/account-menu.component';
   declarations: [
     AccountMenuComponent,
     NotFoundPageComponent
-  ]
+  ],
+  providers: [UserService]
 })
 export class CoreModule { }

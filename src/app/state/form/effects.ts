@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 
-import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
+
+import { UserService } from '../../core/user/user.service';
 
 import * as form from './actions';
 import * as snackBar from '../snack-bar/actions';
@@ -19,8 +21,12 @@ export class FormEffects {
     .ofType(form.SAVE_FORM)
     .map(toPayload)
     .filter((payload: { key: string }) => payload.key === USER_PROFILE_FORM)
-    .map(() => new snackBar.PushMessageAction({ message: 'Profile saved' }));
+    .switchMap((payload: { value: { gender: number, birthdate: Date } }) => {
+      return this.userService.saveProfile(payload.value)
+        .map(() => new snackBar.PushMessageAction({ message: 'Profile saved' }));
+    })
+    .catch(() => Observable.of(new snackBar.PushMessageAction({ message: 'Profile could not be saved!'})));
 
-  constructor(private actions: Actions, private store: Store<State>) { }
+  constructor(private actions: Actions, private store: Store<State>, private userService: UserService) { }
 
 }
