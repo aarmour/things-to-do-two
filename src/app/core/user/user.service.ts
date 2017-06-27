@@ -18,6 +18,11 @@ export class UserService {
 
   constructor(private auth: AngularFireAuth, private db: AngularFireDatabase) { }
 
+  getProfile(): Observable<any> {
+    const uid = this.getUid();
+    return this.db.object(`/user/${uid}/profile`).take(1);
+  }
+
   saveProfile(newProfile: UserProfile): Observable<any> {
     const data: any = pickBy((value) => typeof value !== 'undefined', newProfile);
 
@@ -25,10 +30,14 @@ export class UserService {
       data.birthdate = data.birthdate.getTime();
     }
 
-    const uid = this.auth.auth.currentUser.uid;
+    const uid = this.getUid();
     const profile = this.db.object(`/user/${uid}/profile`);
 
     return Observable.fromPromise(profile.set(data));
+  }
+
+  private getUid() {
+    return this.auth.auth.currentUser.uid;
   }
 
 }
