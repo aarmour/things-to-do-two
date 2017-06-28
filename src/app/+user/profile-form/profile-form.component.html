@@ -6,5 +6,8 @@
     <input name="birthdate" placeholder="Birthday" [(ngModel)]="profileForm.birthdate" mdInput [mdDatepicker]="picker">
     <button mdSuffix [mdDatepickerToggle]="picker"></button>
   </md-input-container>
+  <md-input-container>
+    <input name="bio" placeholder="Bio" maxlength="20" required [(ngModel)]="profileForm.bio" mdInput>
+  </md-input-container>
   <md-datepicker #picker></md-datepicker>
 </form>
