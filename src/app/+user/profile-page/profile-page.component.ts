@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs/Observable';
 
-import * as selectors from '../../state/selectors';
+import * as userSelectors from '../../state/user/selectors';
 import { State } from '../../state/state';
 
 @Component({
@@ -20,7 +20,7 @@ export class ProfilePageComponent implements OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.profile = this.store.select(selectors.user.profile);
+    this.profile = this.store.select(userSelectors.profile);
   }
 
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { State } from '../../state/state';
 import * as userActions from '../../state/user/actions';
-import * as selectors from '../../state/selectors';
+import * as userSelectors from '../../state/user/selectors';
 
 @Component({
   selector: 'ttd-account-menu',
@@ -23,9 +23,9 @@ export class AccountMenuComponent implements OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.isAuthInitialized = this.store.select(selectors.user.initialized);
-    this.isAuthenticated = this.store.select(selectors.user.isAuthenticated);
-    this.profile = this.store.select(selectors.user.profile);
+    this.isAuthInitialized = this.store.select(userSelectors.initialized);
+    this.isAuthenticated = this.store.select(userSelectors.isAuthenticated);
+    this.profile = this.store.select(userSelectors.profile);
   }
 
   login() {

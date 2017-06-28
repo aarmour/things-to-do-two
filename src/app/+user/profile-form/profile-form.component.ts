@@ -7,9 +7,9 @@ import 'rxjs/add/operator/withLatestFrom';
 import { Subscription } from 'rxjs/Subscription';
 
 import * as form from '../../state/form/actions';
+import * as formSelectors from '../../state/form/selectors';
 import * as snackBar from '../../state/snack-bar/actions';
 import { USER_PROFILE_FORM } from '../../state/form/constants';
-import { form as selectors } from '../../state/selectors';
 import { State } from '../../state/state';
 
 @Component({
@@ -36,7 +36,7 @@ export class ProfileFormComponent implements OnDestroy, OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.profileFormSubscription = this.store.select(selectors.profileForm)
+    this.profileFormSubscription = this.store.select(formSelectors.profileForm)
       .subscribe((profileForm) => this.profileForm = profileForm);
 
     this.formValueSubscription = this.ngForm.valueChanges

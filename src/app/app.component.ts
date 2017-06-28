@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Observable';
 
-import * as selectors from './state/selectors';
+import * as snackBarSelectors from './state/snack-bar/selectors';
 import * as snackBar from './state/snack-bar/actions';
 import { State } from './state/state';
 
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<State>, public snackBar: MdSnackBar) { }
 
   ngOnInit() {
-    this.store.select(selectors.snackBar.messages)
+    this.store.select(snackBarSelectors.messages)
       .subscribe((messages: string[]) => {
         messages.forEach(message => {
           this.snackBar.open(message, null, { duration: 1500 });

@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 
 import { State } from '../../state/state';
 import * as userActions from '../../state/user/actions';
-import * as selectors from '../../state/selectors';
+import * as userSelectors from '../../state/user/selectors';
 
 @Component({
   selector: 'ttd-login-page',
@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.isAuthenticated = this.store.select(selectors.user.isAuthenticated);
+    this.isAuthenticated = this.store.select(userSelectors.isAuthenticated);
   }
 
   login() {

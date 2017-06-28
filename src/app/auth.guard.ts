@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { State } from './state/state';
-import * as selectors from './state/selectors';
+import * as userSelectors from './state/user/selectors';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanLoad {
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
     return this.waitForAuthToInitialize()
-      .switchMap(() => this.store.select(selectors.user.isAuthenticated))
+      .switchMap(() => this.store.select(userSelectors.isAuthenticated))
       .take(1)
       .do(authenticated => {
         if (!authenticated) {
@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   canLoad(route: Route): Observable<boolean> {
     return this.waitForAuthToInitialize()
-      .switchMap(() => this.store.select(selectors.user.isAuthenticated))
+      .switchMap(() => this.store.select(userSelectors.isAuthenticated))
       .take(1)
       .do(authenticated => {
         if (!authenticated) {
@@ -39,7 +39,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   waitForAuthToInitialize() {
-    return this.store.select(selectors.user.initialized)
+    return this.store.select(userSelectors.initialized)
       .filter(initialized => initialized)
       .take(1);
   }

@@ -1,7 +1,12 @@
-import { State } from './state';
+import { createSelector } from 'reselect';
 
-export const initialized = (state: State) => state.initialized;
+import { State } from '../state';
+import { State as UserState } from './state';
 
-export const isAuthenticated = (state: State) => state.isAuthenticated;
+export const user = (state: State) => state.user;
 
-export const profile = (state: State) => state.profile;
+export const initialized = createSelector(user, (state: UserState) => state.initialized);
+
+export const isAuthenticated = createSelector(user, (state: UserState) => state.isAuthenticated);
+
+export const profile = createSelector(user, (state: UserState) => state.profile);
